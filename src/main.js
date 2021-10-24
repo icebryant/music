@@ -2,5 +2,15 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import vueLazy from 'vue3-lazy'
+import loadingDirective from '@/components/base/loading/directive'
 
-createApp(App).use(store).use(router).mount('#app')
+import '@/assets/scss/index.scss'
+createApp(App)
+  .use(store)
+  .use(router)
+  .use(vueLazy, {
+    loading: require('@/assets/images/logo.png')
+  })
+  .directive('loading', loadingDirective)
+  .mount('#app')
